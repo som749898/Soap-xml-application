@@ -1,0 +1,129 @@
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://com.iserveu.in/devices"
+        xmlns:tns="http://com.iserveu.in/devices"
+        elementFormDefault="qualified">
+
+    <!--    ALL DEVICES-->
+    <xs:element name="getAllDeviceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="deviceName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllDeviceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="deiceDetails" type="tns:deviceDetails"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+    <!--   EACH POS & micro ATM DEVICES LIST-->
+    <xs:element name="getDeviceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="deviceTypeName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+<!--    <xs:element name="getDeviceResponse">-->
+<!--        <xs:complexType>-->
+<!--            <xs:sequence>-->
+<!--                <xs:element name="deiceList" type="tns:deviceList"/>-->
+<!--            </xs:sequence>-->
+<!--        </xs:complexType>-->
+<!--    </xs:element>-->
+
+
+<!--    POS DEVICE-->
+    <xs:element name="getPOSDeviceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="deviceTypeName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPOSDeviceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="POS-device-detail" type="tns:POS"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+<!--    micro-ATM DEVICE-->
+    <xs:element name="getATMDeviceRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="deviceTypeName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getATMDeviceResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="micro-ATM-device-detail" type="tns:micro-ATM"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+<!--    micro-ATM DEVICE LIST-->
+    <xs:element name="getATMDeviceListRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="deviceTypeName" type="xs:string" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getATMDeviceListResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="micro-ATM-device-detail-list" type="tns:micro-ATM" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <xs:complexType name="deviceDetails">
+        <xs:sequence>
+            <xs:element name="POS" type="tns:POS"/>
+            <xs:element name="micro-ATM" type="tns:micro-ATM"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="POS">
+        <xs:sequence>
+            <xs:element name="device-id" type="xs:string"/>
+            <xs:element name="device-name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="micro-ATM">
+        <xs:sequence>
+            <xs:element name="device-id" type="xs:string"/>
+            <xs:element name="device-name" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
